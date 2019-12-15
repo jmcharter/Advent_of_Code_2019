@@ -29,10 +29,10 @@ def check_criteria(password):
             pass
         else:
             return False
-        if password[step] == password[step -1]:
+        # Check if the current digit is equal to the next, and also that the current
+        # digit occurs no more than twice.
+        if password[step] == password[step -1] and [i for i in password].count(password[step]) <= 2:
             has_duplicate = True
-        if password[step] == password[step -1] and password[step] == password[step -2]:
-            return False
         step -= 1
     return True if has_duplicate else False
 
